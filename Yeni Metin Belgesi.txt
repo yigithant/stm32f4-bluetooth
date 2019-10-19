@@ -1,0 +1,214 @@
+#include "stm32f4xx.h"                  // Device header
+
+
+void Delay(__IO uint32_t nCount);
+/* Private functions ---------------------------------------------------------*/
+ 
+void DisplayNumber(int number);
+ 
+/**
+  * @brief  Main program
+  * @param  None
+  * @retval None
+  */
+
+int main()
+{
+	GPIO_InitTypeDef  GPIO_InitStructure;
+	/* GPIOD Periph clock enable */
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+ 
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+  GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+	GPIO_SetBits(GPIOD, GPIO_Pin_1);
+	GPIO_SetBits(GPIOD, GPIO_Pin_2);
+	GPIO_SetBits(GPIOD, GPIO_Pin_3);
+	GPIO_SetBits(GPIOD, GPIO_Pin_4);
+	GPIO_SetBits(GPIOD, GPIO_Pin_5);
+	GPIO_SetBits(GPIOD, GPIO_Pin_6);
+	GPIO_SetBits(GPIOD, GPIO_Pin_7);
+	
+	
+	GPIO_ResetBits(GPIOD, GPIO_Pin_1);
+	 GPIO_ResetBits(GPIOD, GPIO_Pin_2);	 
+	GPIO_ResetBits(GPIOD, GPIO_Pin_3);
+	 GPIO_SetBits(GPIOD, GPIO_Pin_4); 
+	GPIO_SetBits(GPIOD, GPIO_Pin_7);
+	
+	
+	
+	
+	
+	
+}
+/*
+void DisplayNumber(int number){
+	
+	switch(number){
+		case 0:
+			GPIO_SetBits(GPIOD, GPIO_Pin_1);
+			GPIO_SetBits(GPIOD, GPIO_Pin_2);
+			GPIO_SetBits(GPIOD, GPIO_Pin_3);
+			GPIO_SetBits(GPIOD, GPIO_Pin_4);
+			//GPIO_SetBits(GPIOD, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_5);
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+ 
+			//this sets of the buzzer!
+			
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		case 1:
+				GPIO_SetBits(GPIOD, GPIO_Pin_1);
+			GPIO_SetBits(GPIOD, GPIO_Pin_2);
+			GPIO_SetBits(GPIOD, GPIO_Pin_3);
+			GPIO_SetBits(GPIOD, GPIO_Pin_4);
+			//GPIO_SetBits(GPIOD, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_5);
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+ 
+			//this sets of the buzzer!
+			
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		case 2:
+			GPIO_SetBits(GPIOB, GPIO_Pin_3);
+			GPIO_SetBits(GPIOB, GPIO_Pin_4);
+			GPIO_SetBits(GPIOB, GPIO_Pin_5);
+			GPIO_SetBits(GPIOB, GPIO_Pin_6);
+			//GPIO_SetBits(GPIOB, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_7);
+			GPIO_SetBits(GPIOD, GPIO_Pin_5);
+ 
+			//this sets of the buzzer!
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		case 3:
+			GPIO_SetBits(GPIOB, GPIO_Pin_3);
+			GPIO_SetBits(GPIOB, GPIO_Pin_4);
+			GPIO_SetBits(GPIOB, GPIO_Pin_5);
+			GPIO_SetBits(GPIOB, GPIO_Pin_6);
+			//GPIO_SetBits(GPIOB, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_7);
+			GPIO_SetBits(GPIOD, GPIO_Pin_5);
+ 
+			//this sets of the buzzer!
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		case 4:
+			GPIO_SetBits(GPIOB, GPIO_Pin_3);
+			GPIO_SetBits(GPIOB, GPIO_Pin_4);
+			GPIO_SetBits(GPIOB, GPIO_Pin_5);
+			GPIO_SetBits(GPIOB, GPIO_Pin_6);
+			//GPIO_SetBits(GPIOB, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_7);
+			GPIO_SetBits(GPIOD, GPIO_Pin_5);
+ 
+			//this sets of the buzzer!
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		case 5:
+			GPIO_SetBits(GPIOB, GPIO_Pin_3);
+			GPIO_SetBits(GPIOB, GPIO_Pin_4);
+			GPIO_SetBits(GPIOB, GPIO_Pin_5);
+			GPIO_SetBits(GPIOB, GPIO_Pin_6);
+			//GPIO_SetBits(GPIOB, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_7);
+			GPIO_SetBits(GPIOD, GPIO_Pin_5);
+ 
+			//this sets of the buzzer!
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		case 6:
+			GPIO_SetBits(GPIOB, GPIO_Pin_3);
+			GPIO_SetBits(GPIOB, GPIO_Pin_4);
+			GPIO_SetBits(GPIOB, GPIO_Pin_5);
+			GPIO_SetBits(GPIOB, GPIO_Pin_6);
+			//GPIO_SetBits(GPIOB, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_7);
+			GPIO_SetBits(GPIOD, GPIO_Pin_5);
+ 
+			//this sets of the buzzer!
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		case 7:
+			GPIO_SetBits(GPIOB, GPIO_Pin_3);
+			GPIO_SetBits(GPIOB, GPIO_Pin_4);
+			GPIO_SetBits(GPIOB, GPIO_Pin_5);
+			GPIO_SetBits(GPIOB, GPIO_Pin_6);
+			//GPIO_SetBits(GPIOB, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_7);
+			GPIO_SetBits(GPIOD, GPIO_Pin_5);
+ 
+			//this sets of the buzzer!
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		case 8:
+			GPIO_SetBits(GPIOB, GPIO_Pin_3);
+			GPIO_SetBits(GPIOB, GPIO_Pin_4);
+			GPIO_SetBits(GPIOB, GPIO_Pin_5);
+			GPIO_SetBits(GPIOB, GPIO_Pin_6);
+			//GPIO_SetBits(GPIOB, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_7);
+			GPIO_SetBits(GPIOD, GPIO_Pin_5);
+ 
+			//this sets of the buzzer!
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		case 9:
+			GPIO_SetBits(GPIOD, GPIO_Pin_1);
+			GPIO_SetBits(GPIOD, GPIO_Pin_2);
+			GPIO_SetBits(GPIOD, GPIO_Pin_3);
+			GPIO_SetBits(GPIOD, GPIO_Pin_4);
+			//GPIO_SetBits(GPIOD, GPIO_Pin_7);
+ 
+			GPIO_SetBits(GPIOD, GPIO_Pin_6);
+			GPIO_SetBits(GPIOD, GPIO_Pin_7);
+ 
+			//this sets of the buzzer!
+			
+			  Delay(49999999);
+			  Delay(49999999);
+		break;
+		
+		
+	}
+}
+void Delay(__IO uint32_t nCount)
+{
+  while(nCount--)
+  {
+  }
+}
+ */
+
